@@ -17,13 +17,12 @@ public class ClientGreeter {
 			e1.printStackTrace();
 		}
 		// 2. Create an integer for the server's port number
-		int port;
+		int port = 10080;
 		// 3. Surround steps 4-9 in a try-catch block that catches any IOExceptions.
 		try {
 			// 4. Create an object of the Socket class. When initializing the object, pass
 			// in the ip address and the port number
 			Socket sock;
-			port = sock.getPort();
 			sock = new Socket(ip, port);
 			// 5. Create a DataOutputStream object. When initializing it, use the Socket
 			// object you created in step 4 to call the getOutputStream() method.

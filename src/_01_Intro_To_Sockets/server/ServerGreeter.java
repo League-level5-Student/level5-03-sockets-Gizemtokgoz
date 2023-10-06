@@ -35,7 +35,7 @@ public class ServerGreeter extends Thread {
 				// serverSocket.accept();
 				// Change serverSocket to match the ServerSocket member variable you created in
 				// step 1.
-				// The program will wait her until either a client connects or the timeout
+				// The program will wait here until either a client connects or the timeout
 				// expires.
 				Socket sk = new Socket(serso.accept());
 				// 10. Let the user know that the client has connected.
@@ -51,7 +51,8 @@ public class ServerGreeter extends Thread {
 				DataOutputStream dos = new DataOutputStream(sk.getOutputStream());
 				// 14. Use the DataOutputStream object to send a message to the client using the
 				// writeUTF(String message) method.
-				System.out.println(dos.writeUTF(String message));
+				String mess = "message";
+				System.out.println(dos.writeUTF(mess));
 				// 15. Close the client server
 				sk.close();
 			} catch (SocketTimeoutException e) {
