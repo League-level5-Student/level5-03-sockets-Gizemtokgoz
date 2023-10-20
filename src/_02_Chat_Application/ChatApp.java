@@ -13,8 +13,8 @@ import _00_Click_Chat.networking.Server;
 
 public class ChatApp extends JFrame {
 	
-	Server server;
-	Client client;
+	ServerCA server;
+	ClientCA client;
 	
 	
 	public static void main(String[] args) {
@@ -25,7 +25,7 @@ public class ChatApp extends JFrame {
 		
 		int response = JOptionPane.showConfirmDialog(null, "Would you like to host a connection?", "Chat App!", JOptionPane.YES_NO_OPTION);
 		if(response == JOptionPane.YES_OPTION){
-			server = new Server(8080);
+			server = new ServerCA(8080);
 			setTitle("SERVER");
 			JOptionPane.showMessageDialog(null, "Server started at: " + server.getIPAddress() + "\nPort: " + server.getPort());
 			setVisible(true);
@@ -38,7 +38,7 @@ public class ChatApp extends JFrame {
 			String ipStr = JOptionPane.showInputDialog("Enter the IP Address");
 			String prtStr = JOptionPane.showInputDialog("Enter the port number");
 			int port = Integer.parseInt(prtStr);
-			client = new Client(ipStr, port);
+			client = new ClientCA(ipStr, port);
 			setVisible(true);
 			setSize(400, 300);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
