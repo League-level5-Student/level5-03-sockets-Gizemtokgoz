@@ -20,8 +20,11 @@ public class ServerCA {
 	ObjectOutputStream os;
 	ObjectInputStream is;
 
-	public ServerCA(int port) {
+	private ChatApp app;
+
+	public ServerCA(int port, ChatApp app) {
 		this.port = port;
+		this.app = app;
 	}
 
 	public void start(){
@@ -62,10 +65,10 @@ public class ServerCA {
 		return port;
 	}
 
-	public void sendClick() {
+	public void sendMessage(String message) {
 		try {
 			if (os != null) {
-				os.writeObject("CLICK SENT FROM SERVER");
+				os.writeObject(message);
 				os.flush();
 			}
 		} catch (IOException e) {

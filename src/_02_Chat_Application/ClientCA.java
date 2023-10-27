@@ -16,10 +16,12 @@ public class ClientCA {
 
 	ObjectOutputStream os;
 	ObjectInputStream is;
+	private ChatApp app;
 
-	public ClientCA(String ip, int port) {
+	public ClientCA(String ip, int port, ChatApp app) {
 		this.ip = ip;
 		this.port = port;
+		this.app = app;
 	}
 
 	public void start(){
@@ -40,7 +42,7 @@ public class ClientCA {
 		
 		while (connection.isConnected()) {
 			try {
-				JOptionPane.showMessageDialog(null, is.readObject());
+				app.setTextArea((String) is.readObject());
 				System.out.println(is.readObject());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -49,10 +51,10 @@ public class ClientCA {
 		}
 	}
 	
-	public void sendClick() {
+	public void sendMessage(String message) {
 		try {
 			if (os != null) {
-				os.writeObject("CLICK SENT FROM CLIENT");
+				os.writeObject(message);
 				os.flush();
 			}
 		} catch (IOException e) {
